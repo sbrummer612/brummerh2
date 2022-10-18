@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Brummer H2 Java in memory database</title>
+    <link rel="stylesheet" href="/main.css" />
+</head>
+<body>
+
+<h1>MongoDB React</h1>
+<h2>Tests</h2>
+<h4 th:text="${extra}"></h4>
+
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th><th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="test : ${tests}">
+            <td>
+                <form th:method="post"
+                      th:action="@{'/homeController/updateTest'}" th:object="${test}" >
+                      <input name="id" th:value="${test.id}" type="hidden" />
+                      <input name="name" th:value="*{name}" type="text" />
+                    <input type="submit" value="Update" />
+                </form>
+            </td>
+            <td><a href="" th:href="@{/homeController/deleteTest(id=${test.id})}">Delete test</a></td>
+        </tr>
+        <tr>
+	        <td>
+	            <form th:method="post"
+	                  th:action="@{'/homeController/addTest'}">
+	                  <input name="name" value="" type="text" />
+	                  
+	                <input type="submit" value="Add Test" />
+	            </form>
+	        </td>
+        </tr>
+        <tr>
+        	<td><a href="/">Home</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>
