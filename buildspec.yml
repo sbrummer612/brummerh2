@@ -1,0 +1,14 @@
+version: 0.2
+
+phases:
+  install:
+    java: corretto11
+  post_build:
+      commands:
+        -mvn package
+        -mv target/brummerh2-0.0.1-SNAPSHOT.jar brummerh2-0.0.1-SNAPSHOT.jar
+      
+artifacts:
+  files:
+    - brummerh2-0.0.1-SNAPSHOT.jar
+    - .ebextensions/**/*
